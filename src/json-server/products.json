@@ -1,0 +1,14 @@
+{
+    "products": [
+      { "id": 1, "name": "Basic Tee", "color": "Black", "price" : 35, "img" : "https://th.bing.com/th/id/OIP.7ZxepcJaDNoUZqs3JZPxKwHaHa?pid=ImgDet&rs=1"},
+      { "id": 1, "name": "Basic Tee", "color": "Black", "price" : 35, "img" : "https://th.bing.com/th/id/OIP.xMDd4CH54MHuY8XZrkIPsAHaHl?pid=ImgDet&rs=1" },
+      { "id": 1, "name": "Basic Tee", "color": "Black", "price" : 35, "img" : "https://th.bing.com/th/id/OIP.aTqLr67xMXK6ONIb8YAlRgHaHa?pid=ImgDet&w=640&h=640&rs=1" },
+      { "id": 1, "name": "Basic Tee", "color": "Black", "price" : 35, "img" : "https://th.bing.com/th/id/OIP.NvCVfKKp4DW6lYApeWpXzQHaHa?w=201&h=201&c=7&r=0&o=5&pid=1.7" }
+    ]
+
+    // "comments": [
+    //   { "id": 1, "body": "some comment", "postId": 1 }
+    // ],
+    // "profile": { "name": "typicode" }
+}
+  
