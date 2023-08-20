@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Categories() {
   return (
-    <div className="px-8 py-1 bg-primary md:flex items-center cursor-pointer relative group hidden">
+    <div className="px-8 py-1 bg-primary-v1 md:flex items-center cursor-pointer relative group hidden">
       <span className="text-white">
         <i className="fa-solid fa-bars" />
       </span>

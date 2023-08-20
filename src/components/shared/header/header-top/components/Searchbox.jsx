@@ -10,7 +10,7 @@ export default function Searchbox() {
         type="text"
         name="search"
         id="search"
-        className="w-full border border-primary border-r-0 pl-12 py-1 pr-3 rounded-l-md focus:outline-none hidden md:flex"
+        className="w-full border border-primary border-r-0 pl-12 pr-3 rounded-l-md focus:outline-none hidden md:flex"
         placeholder="search"
       />
       <button className="bg-primary-v1 border border-primary text-white text-center px-8 pt-1 rounded-r-md hover:bg-transparent hover:text-primary transition hidden md:flex">

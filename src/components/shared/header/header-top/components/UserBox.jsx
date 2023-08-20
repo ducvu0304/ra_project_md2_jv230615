@@ -7,7 +7,7 @@ const UserBox = () => {
         href="#"
         className="text-center text-gray-700 hover:text-primary transition relative"
       >
-        <div className="text-2xl">
+        <div className="text-xl">
           <i className="fa-regular fa-heart" />
         </div>
         <div className="text-xs leading-3">Wishlist</div>
@@ -19,7 +19,7 @@ const UserBox = () => {
         href="#"
         className="text-center text-gray-700 hover:text-primary transition relative"
       >
-        <div className="text-2xl">
+        <div className="text-xl">
           <i className="fa-solid fa-bag-shopping" />
         </div>
         <div className="text-xs leading-3">Cart</div>
@@ -31,7 +31,7 @@ const UserBox = () => {
         href="#"
         className="text-center text-gray-700 hover:text-primary transition relative"
       >
-        <div className="text-2xl">
+        <div className="text-xl">
           <i className="fa-regular fa-user" />
         </div>
         <div className="text-xs leading-3">Account</div>

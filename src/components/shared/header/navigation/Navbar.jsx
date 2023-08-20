@@ -4,7 +4,7 @@ import Navigation from "./components/Navigation";
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-800">
+    <nav className="bg-primary-v1">
       <div className="container flex">
         <Categories />
         <Navigation />
