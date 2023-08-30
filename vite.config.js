@@ -12,6 +12,11 @@ const aliasConfig = {
   "@images" : fileURLToPath(new URL ("./src/static/images", import.meta.url)),
   "@icons" : fileURLToPath(new URL ("./src/static/icons", import.meta.url)),
   "@shared" : fileURLToPath(new URL ("./src/components/shared", import.meta.url)),
+  "@elements" : fileURLToPath(new URL ("./src/components/elements", import.meta.url)),
+  "@api" : fileURLToPath(new URL ("./src/api", import.meta.url)),
+  "@components" :fileURLToPath(new URL ("./src/components/components", import.meta.url)),
+  "@store" :fileURLToPath(new URL ("./src/store/slices", import.meta.url)),
+  "@Js" : fileURLToPath(new URL ("./src/Js", import.meta.url))
 }
 
 export default defineConfig({
