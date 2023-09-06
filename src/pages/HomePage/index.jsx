@@ -1,13 +1,14 @@
-import OurProduct from "@components/home/OurProduct";
-import Carousels from "@components/home/carousel";
 import Banner from "@shared/components/Banner";
-
+import TopSeller from "@components/home/TopSeller";
+import Category from "@components/home/category";
+import Features from "@components/home/Features";
 const HomePage = () => {
   return (
-    <div>
+    <div className="">
       <Banner />
-      {/* <Carousels /> */}
-      {/* <OurProduct /> */}
+      <Features />
+      <TopSeller />
+      <Category />
     </div>
   );
 };

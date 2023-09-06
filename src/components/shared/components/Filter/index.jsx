@@ -1,72 +1,15 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
-import BreadCrumbs from "@shared/components/BreadCrumbs";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
-const Filter = ({ products }) => {
+const Filter = () => {
   const [showFilters, setShowfilters] = useState(false);
-  const [check, setCheck] = useState({
-    leather: false,
-    cotton: false,
-    fabric: false,
-    crocodile: false,
-    wool: false,
-    large: false,
-    medium: false,
-    small: false,
-    mini: false,
-    luxesignatire: false,
-    luxelondon: false,
-  });
-
-  const {
-    leather,
-    cotton,
-    fabric,
-    crocodile,
-    wool,
-    large,
-    medium,
-    small,
-    mini,
-    luxesignatire,
-    luxelondon,
-  } = check;
-
-  const changeHandler = (e) => {
-    setCheck({
-      ...check,
-      [e.target.name]: e.target.checked,
-    });
-  };
-
-  const applyFilters = (e) => {
-    setCheck({
-      ...check,
-      leather: false,
-      cotton: false,
-      fabric: false,
-      crocodile: false,
-      wool: false,
-      large: false,
-      medium: false,
-      small: false,
-      mini: false,
-      // luxesignatire: false,
-      // luxelondon: false,
-    });
-  };
+  const check = useSelector((store) => store.filter);
 
   return (
     <div className="2xl:container 2xl:mx-auto">
-      <div className="lg:px-20 md:px-6 px-4">
-        <p className=" text-sm leading-3 text-gray-600 font-normal mb-4">
-          <BreadCrumbs />
-        </p>
-        <div className=" flex justify-between items-center mb-4">
-          <h2 className=" lg:text-3xl text-2xl lg:leading-9 leading-7 text-gray-800 font-semibold">
-            MEN RUNNING
-          </h2>
-
+      <div className="md:px-6">
+        <div className="  mb-4">
           {/*  filters Button (md and plus Screen) */}
           <button
             onClick={() => setShowfilters(!showFilters)}
@@ -147,12 +90,8 @@ const Filter = ({ products }) => {
             Filters
           </button>
         </div>
-        <p className="text-lg leading-5 text-gray-600 font-medium">
-          {products.length} Products
-        </p>
 
         {/* Filters Button (Small Screen)  */}
-
         <button
           onClick={() => setShowfilters(!showFilters)}
           className="

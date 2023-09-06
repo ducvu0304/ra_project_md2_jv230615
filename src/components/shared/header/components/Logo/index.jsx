@@ -1,15 +1,16 @@
-import React from 'react'
+import React from "react";
 import logo from "@images/logo.png";
+import { Link } from "react-router-dom";
 
 export default function Logo() {
   return (
-    <div className='flex items-center'>
-        <img 
-            src={logo} 
-            alt="logo"
-            className='w-[80px]' 
-        />
-        <p className='ml-4 text-3xl'>Luxe</p>
-    </div>
-  )
+    <>
+      <Link to="/">
+        <div className="flex items-center cursor-pointer">
+          <img src={logo} alt="logo" className="w-[80px]" />
+          <p className="ml-2 text-4xl">Luxe</p>
+        </div>
+      </Link>
+    </>
+  );
 }

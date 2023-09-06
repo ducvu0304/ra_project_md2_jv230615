@@ -1,23 +1,43 @@
 import { Route, Routes } from "react-router-dom";
 
 import Layout from "./pages";
-import HomePage from "./pages/HomePage";
+import Page404 from "./components/components/404";
+import LazyLoad from "@shared/components/LazyLoad/LazyLoad";
 import MenPage from "./pages/MenPage";
-import LuxeForm from "@shared/components/LuxeForm";
-import ProductDetail from "@shared/components/ProductDetail";
-import WomenPage from "./pages/WomenPage";
-import NewArrivals from "./pages/NewArrivals";
+import ShoppingCart from "@shared/components/ShoppingCart";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/news" element={<NewArrivals />} />
-        <Route path="/men" element={<MenPage />} />
-        <Route path="/women" element={<WomenPage />} />
-        <Route path="/login" element={<LuxeForm />} />
-        <Route path="/ProductDetail" element={<ProductDetail />} />
+        <Route index element={LazyLoad(() => import("@pages/HomePage"))()} />
+        {/* <Route
+          path="/new"
+          element={LazyLoad(() => import("@pages/NewArrivals"))()}
+        /> */}
+        <Route
+          path="/men"
+          // element={<MenPage />}
+          element={LazyLoad(() => import("@pages/MenPage"))()}
+        />
+        <Route
+          path="/women"
+          element={LazyLoad(() => import("@pages/WomenPage"))()}
+        />
+        <Route
+          path="/login"
+          element={LazyLoad(() => import("@shared/components/LuxeForm"))()}
+        />
+        <Route
+          path="/detail"
+          element={LazyLoad(() => import("@shared/components/ProductDetail"))()}
+        />
+        <Route
+          path="/shopping-cart"
+          element={<ShoppingCart />}
+          // LazyLoad(() => import("@shared/components/ShoppingCart"))()
+        />
+        <Route path="*" element={<Page404 />} />
       </Route>
     </Routes>
   );

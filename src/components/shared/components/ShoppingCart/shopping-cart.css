@@ -1,0 +1,12 @@
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+.alert {
+    position: fixed;
+    left: 35%;
+    bottom: 50%;
+}
+
+
+
+  
+
+  

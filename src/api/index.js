@@ -1,7 +1,7 @@
 import user from "./modules/user";
-import products from "./modules/products";
+import product from "./modules/product";
 
 export default {
   user,
-  products,
+  product,
 };

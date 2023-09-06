@@ -16,7 +16,10 @@ const aliasConfig = {
   "@api" : fileURLToPath(new URL ("./src/api", import.meta.url)),
   "@components" :fileURLToPath(new URL ("./src/components/components", import.meta.url)),
   "@store" :fileURLToPath(new URL ("./src/store/slices", import.meta.url)),
-  "@Js" : fileURLToPath(new URL ("./src/Js", import.meta.url))
+  "@Js" : fileURLToPath(new URL ("./src/Js", import.meta.url)),
+  "@static" :fileURLToPath(new URL ('./src/static', import.meta.url)),
+  "@pages" : fileURLToPath(new URL ('./src/pages', import.meta.url)),
+  "@css" : fileURLToPath(new URL ('./src/assets/css', import.meta.url))
 }
 
 export default defineConfig({

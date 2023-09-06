@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 
-export default function BreadCrumbs() {
+export default function BreadCrumbs({ name }) {
   return (
     <nav
       className="
@@ -30,10 +31,10 @@ export default function BreadCrumbs() {
                 href="#"
                 className="text-neutral-500 hover:text-blue-700 hover:underline dark:text-neutral-200"
               >
-                Men
+                {name}
               </a>
             </li>
-            <li>
+            {/* <li>
               <span className="mx-2 text-neutral-500 dark:text-neutral-200">
                 /
               </span>
@@ -45,7 +46,7 @@ export default function BreadCrumbs() {
               >
                 Running
               </a>
-            </li>
+            </li> */}
           </ol>
         </nav>
       </div>

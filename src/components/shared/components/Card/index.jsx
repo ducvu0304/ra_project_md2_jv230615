@@ -1,9 +1,19 @@
 /* eslint-disable react/prop-types */
 import "./card.css";
 
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "@store/cart.slice";
+import { changeVND } from "@Js";
+
 function CardProduct({ product }) {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (id) => {
+    dispatch(cartActions.addToCart(id));
+  };
+
   return (
-    <div className="container page-wrapper cursor-pointer">
+    <div className="cardProduct container page-wrapper cursor-pointer">
       <div className="page-inner">
         <div className="row">
           <div className="el-wrapper">
@@ -28,8 +38,8 @@ function CardProduct({ product }) {
                 <div className="h-bg-inner"></div>
               </div>
 
-              <div className="cart ">
-                <span className="price">$120</span>
+              <div className="cart" onClick={() => handleAddToCart(product.id)}>
+                <span className="price">{changeVND(product.price)} đ</span>
                 <span className="add-to-cart">
                   <span className="txt">Add in cart</span>
                 </span>

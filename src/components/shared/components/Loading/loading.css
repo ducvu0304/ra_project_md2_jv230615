@@ -1,0 +1,11 @@
+/* Define the animation */
+@keyframes loading-animation {
+    40% { opacity: 0.4 }
+    100% { opacity: 1 }
+  }
+
+  /* Apply the animation to an element */
+  .loading {
+    user-select: none;
+    animation: loading-animation 1s ease-in-out 0s infinite none;
+  }

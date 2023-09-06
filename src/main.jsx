@@ -7,6 +7,10 @@ import { ThemeProvider } from "@material-tailwind/react";
 import { Provider } from "react-redux";
 import store from "./store";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+// Initialization for ES Users
+import { Toast, initTE } from "tw-elements";
+
+initTE({ Toast });
 
 const clientGoogleId =
   "355217634639-p7unptikl0jpq1jiuug2db4jmjee727c.apps.googleusercontent.com";

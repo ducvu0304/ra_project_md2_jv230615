@@ -5,7 +5,7 @@ import Footer from "../components/shared/footer";
 
 export default function Layout() {
   return (
-    <div>
+    <div className="relative">
       <Header />
       <Outlet />
       <Footer />

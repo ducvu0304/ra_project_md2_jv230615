@@ -1,0 +1,11 @@
+.view-cart {
+    display: none;
+    position: absolute;
+    left: 18px;
+    transition: left 2s ease-in-out 5s; 
+}
+
+.product-cart:hover .view-cart {
+    display: block;
+   
+}

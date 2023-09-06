@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
 import { encodeValue } from "@Js";
 import api from "@api";
 
+const token = localStorage.getItem("token") || "";
+
 // InitialState
 const initialState = {
-  user: [],
-  isLoggedIn: false,
+  users: [],
+  isLoggedIn: `${token ? true : false}`,
   isCreated: false,
 };
 
@@ -34,8 +35,8 @@ const slice = createSlice({
   extraReducers: (builder) => {
     // Login
     builder.addCase(login.fulfilled, (state, action) => {
+      console.log(state.users);
       state.isLoggedIn = true;
-      console.log(action.payload);
       const token = encodeValue(action.payload[0]);
       localStorage.setItem("token", token);
     });

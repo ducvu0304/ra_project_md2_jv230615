@@ -68,17 +68,17 @@ export default function SignIn() {
   };
 
   return (
-    <div className="w-[320px] md:w-[700px] lg:w-full">
+    <div className="w-[320px] md:w-[700px]">
       <div className="flex justify-center items-center h-full ">
         <div className="container mb-12 lg:w-full ">
           <p className="text-2xl text-center my-4">Sign into Your account</p>
           <div className="grid grid-cols-1 w-full gap-5 md:grid-cols-2">
-            <div>
+            {/* <div>
               <LoginGoogleButton />
-            </div>
-            <div className="text-center">
+            </div> */}
+            {/* <div className="text-center">
               <button>Facebook</button>
-            </div>
+            </div> */}
           </div>
           <div className="flex items-center justify-center my-4">
             <div className="border-b border-gray-700 w-1/2"></div>
@@ -126,7 +126,7 @@ export default function SignIn() {
                     />
                     <div
                       onClick={() => setHidePassword(!hidePassword)}
-                      className="absolute right-4 top-2 cursor-pointer"
+                      className="absolute right-5 top-2 cursor-pointer"
                     >
                       {hidePassword ? (
                         <i className="fa-solid fa-eye-slash"></i>
@@ -141,7 +141,7 @@ export default function SignIn() {
                     )}
                   </ErrorMessage>
                 </div>
-                <div className="grid mb-5 text-blue-700 lg:grid-cols-2">
+                <div className="grid mb-5 text-blue-700 grid-cols-2">
                   <div>
                     <Field
                       name="checkRemember"
