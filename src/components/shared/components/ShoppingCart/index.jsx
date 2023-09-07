@@ -40,6 +40,14 @@ export default function ShoppingCart() {
       </div>
       <div className="w-full absolute top-0 ">
         {showCheckOut ? <CheckOutForm /> : ""}
+        <div className="absolute top-5 right-10 ">
+          <div
+            onClick={() => setShowCheckOut(!showCheckOut)} 
+            className="text-white text-2xl cursor-pointer"
+          >
+            <i className="fa-solid fa-xmark"></i>
+          </div>
+        </div>
       </div>
     </div>
   );

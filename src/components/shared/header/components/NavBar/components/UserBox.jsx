@@ -9,7 +9,6 @@ import { decodeValue } from "@Js";
 
 export default function UserBox() {
   const [user, setUser] = useState({});
-  console.log(user);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const token = localStorage.getItem("token") || "";
 

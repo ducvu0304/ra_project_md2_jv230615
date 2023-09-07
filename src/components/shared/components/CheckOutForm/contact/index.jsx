@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import React, { useEffect, useState } from "react";
 import "../checkout.css";
 
-export default function ContactForm({ handleShipping }) {
+export default function ContactForm({ handleShipping, contactInfo , setContactInfo}) {
+  const [errors, setErrors] = useState({
+    email: '',
+    address: '', 
+    phoneNumber: ''
+  })
+ 
   const [checked, setChecked] = useState({
     standard: true,
     express: false,
@@ -24,6 +31,39 @@ export default function ContactForm({ handleShipping }) {
       handleShipping(name);
     }
   };
+
+  const handleContactInfo = (e) => {
+    if(!e.target.value) {
+      setErrors({
+        ...errors,
+        [e.target.name] : 'Require !'
+      })
+    }else if(e.target.name === "email") {
+      if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(e.target.value)) {
+        setErrors({
+          ...errors,
+          [e.target.name] : "Invalid email !"
+        })
+      }else {
+        setErrors({
+          ...errors,
+          [e.target.name] : ""
+        })
+      }
+    }else {
+        setErrors({
+          ...errors,
+          [e.target.name] : ""
+        })
+    }
+
+    setContactInfo({
+      ...contactInfo,
+      [e.target.name] : e.target.value
+    })
+  }
+
+
   return (
     <div>
       <div className="px-10 my-10">
@@ -32,38 +72,54 @@ export default function ContactForm({ handleShipping }) {
           <p className="text-3xl font-istok_web text-primary-v1">
             Contact information
           </p>
-          <form action="">
-            <div className="mt-3">
-              <label className="text-lg font-istok_web " htmlFor="">
-                Email address
-              </label>
-              <br />
-              <input
-                className="border-[1px] border-blue-300  rounded-lg bg-white w-full h-[40px] px-3 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-700"
-                type="text"
-              />
-            </div>
-            <div className="mt-3">
-              <label className="text-lg font-istok_web" htmlFor="">
-                Address
-              </label>
-              <br />
-              <input
-                className="border-[1px] border-blue-300  rounded-lg bg-white w-full h-[40px] px-3 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-700"
-                type="text"
-              />
-            </div>
-            <div className="mt-3">
-              <label className="text-lg font-istok_web" htmlFor="">
-                Phone number
-              </label>
-              <br />
-              <input
-                className="border-[1px] border-blue-300  rounded-lg bg-white w-full h-[40px] px-3 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-700"
-                type="text"
-              />
-            </div>
-          </form>
+              <form>
+                <div className="mt-3">
+                  <label className="text-lg font-istok_web " htmlFor="">
+                    Email address
+                  </label>
+                  <br />
+                  <input
+                    className="border-[1px] border-blue-300  rounded-lg bg-white w-full h-[40px] px-3 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-700"
+                    type="text"
+                    name='email'
+                    value={contactInfo.email}
+                    onChange={(e => handleContactInfo(e))}
+                  />
+                  <p className="text-red-500 mt-[1px]">{errors.email ? errors.email : ''}</p> 
+                </div>
+                <div className="mt-3">
+                  <label className="text-lg font-istok_web" htmlFor="">
+                    Address
+                  </label>
+                  <br />
+                  <input
+                    className="border-[1px] border-blue-300  rounded-lg bg-white w-full h-[40px] px-3 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-700"
+                    autoComplete="off"
+                    type="text"
+                    name="address"
+                    value={contactInfo.address}
+                    onChange={(e => handleContactInfo(e))}
+                  />
+                  <p className="text-red-500 mt-[1px]">{errors.address ? errors.address : ''}</p> 
+                </div>
+                <div className="mt-3">
+                  <label className="text-lg font-istok_web" htmlFor="">
+                    Phone number
+                  </label>
+                  <br />
+                  <input
+                    className="border-[1px] border-blue-300  rounded-lg bg-white w-full h-[40px] px-3 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-700"
+                    type="tel"
+                    autoComplete="off"
+                    placeholder="090-8888-8888"
+                    name="phoneNumber"
+                    pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}"
+                    value={contactInfo.phoneNumber}
+                    onChange={(e => handleContactInfo(e))}
+                  />
+                  <p className="text-red-500 mt-[1px]">{errors.phoneNumber ? errors.phoneNumber : ''}</p> 
+                </div>
+              </form>
         </div>
 
         {/* Delivery method */}

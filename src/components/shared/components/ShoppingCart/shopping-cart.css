@@ -2,7 +2,7 @@
 .alert {
     position: fixed;
     left: 35%;
-    bottom: 50%;
+    top: 50px;
 }
 
 

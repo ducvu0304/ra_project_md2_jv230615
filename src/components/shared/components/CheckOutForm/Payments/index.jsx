@@ -1,8 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../checkout.css";
 import Button from "@elements/button";
 
+
+
+
+
 export default function Payments() {
+  var pattern = /[^\x00-\x7F]/g;
+  const [formDate, setFormDate] = useState({
+    month: '',
+    year: '',
+  })
+
+  const [number, setNumber] = useState({
+    partOne: '',
+    partTwo: '',
+    partThree: '',
+    partFour: ''
+  })
+
+  const [paymentInfo, setPaymentInfo] = useState({
+    nameOnCard: '',
+    cardNumber: '',
+    expireDate: '',
+    cvc: ''
+  })
+
+
+  const [errors, setErrors] = useState({
+    nameOnCard: '',
+    cardNumber: '',
+    expireDate: '',
+    cvc: ''
+  })
+
+
   const [choices, setChoices] = useState({
     visa: false,
     master: false,
@@ -10,26 +43,7 @@ export default function Payments() {
 
   const { visa, master } = choices;
 
-  const [checked, setChecked] = useState({
-    standard: true,
-    express: false,
-  });
-
-  const { standard, express } = checked;
-
   const changeHandler = (name) => {
-    if (name === "standard") {
-      setChecked({
-        standard: true,
-        express: false,
-      });
-    } else {
-      setChecked({
-        standard: false,
-        express: true,
-      });
-    }
-
     if (name === "visa") {
       setChoices({
         visa: true,
@@ -42,6 +56,124 @@ export default function Payments() {
       });
     }
   };
+ 
+  const handleCardNumber = (e) => {
+    if(e.target.value.length === 4) {
+      setNumber({
+        ...number,
+        [e.target.name] : e.target.value
+      })
+    }else {
+      setNumber({
+        ...number,
+        [e.target.name] : '',
+      })
+    }
+  } 
+  
+  useEffect(() => {
+    setPaymentInfo({
+      ...paymentInfo,
+      cardNumber: number.partOne + number.partTwo + number.partThree + number.partFour
+    })
+  }, [number])
+
+  // Expire Date
+  const handleExpireDate = (e) =>{
+    if(e.target.value.length === 2) {
+      if(e.target.name === "year") {
+        setFormDate({
+            ...formDate,
+            [e.target.name] : e.target.value,
+        })
+      }else if( e.target.value <= 12) {
+          setFormDate({
+            ...formDate,
+            [e.target.name] : e.target.value
+          })
+      }else {
+          setFormDate({
+            ...formDate,
+            [e.target.name] : '',
+          })
+      } 
+    }else {
+      setFormDate({
+        ...formDate,
+        [e.target.name] : '',
+      })
+    }
+
+    setPaymentInfo({
+      ...paymentInfo,
+      expireDate: formDate.year + formDate.month 
+    })
+  }
+
+  useEffect(() => {
+    setPaymentInfo({
+      ...paymentInfo,
+      expireDate: formDate.year + formDate.month 
+    })
+  }, [formDate])
+
+
+  const handlePaymentInfo = (e) => {
+    // Name on Card
+    if(!e.target.value) {
+      setErrors({
+        ...errors,
+        [e.target.name]: "Required !"
+      })
+    }else if(e.target.name === 'nameOnCard') {
+      if(pattern.test(e.target.value)) {
+        setErrors({
+          ...errors,
+          [e.target.name]: "Name on card is incorrect (example: VU VAN DUC) !"
+        })
+      }else {
+        setErrors({
+          ...errors,
+          [e.target.name]: ""
+        })
+        setPaymentInfo({
+          ...paymentInfo,
+          [e.target.name]: e.target.value
+        })
+      }
+
+    }else if(e.target.name === 'cvc') {
+      if(/[0-9]/.test(e.target.value)) {
+        setPaymentInfo({
+          ...paymentInfo,
+          [e.target.name]: e.target.value
+        })
+      }
+    }else {
+      setErrors({
+        ...errors,
+        [e.target.name]: ""
+      })
+    }
+
+  }
+
+  const handlePayment = () => {
+    let isChoices = choices.visa || choices.master
+    console.log(isChoices);
+    
+    const isPayment = paymentInfo.nameOnCard && 
+                      paymentInfo.cardNumber.length === 16 && 
+                      paymentInfo.expireDate.length === 4 && 
+                      paymentInfo.cvc.length === 3
+
+    if(isPayment && isChoices ) {
+      console.log(true);
+    }else {
+      console.log();
+    }
+  }
+
   return (
     <div>
       <div className="px-10 my-10">
@@ -71,16 +203,21 @@ export default function Payments() {
             </div>
           </div>
           <form action="">
-            {/* Card number */}
+            {/* Name on card */}
             <div className="mt-3">
               <label className="text-lg font-istok_web " htmlFor="">
                 Name on card
               </label>
               <br />
               <input
-                className="border-[1px] border-blue-300  rounded-lg bg-white w-full h-[40px] px-3 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-700"
+                autoComplete="off"
+                className="uppercase border-[1px] border-blue-300  rounded-lg bg-white w-full h-[40px] px-3 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-700"
                 type="text"
+                name="nameOnCard"
+                placeholder="VU VAN DUC"
+                onChange={(e) => handlePaymentInfo(e)}
               />
+              <p className="text-red-500">{errors.nameOnCard}</p>
             </div>
             {/* Card number */}
             <div className="mt-3">
@@ -92,34 +229,34 @@ export default function Payments() {
                 <input
                   className="w-10 focus:outline-none mr-2"
                   type="text"
-                  name="month"
-                  // value="1234"
+                  name="partOne"
                   maxLength={4}
                   placeholder="_ _ _ _"
+                  onChange={(e) => handleCardNumber(e)}
                 />
                 <input
                   className="w-10 focus:outline-none mr-2"
                   type="text"
-                  name="year"
-                  // value="1234"
+                  name="partTwo"
                   maxLength={4}
                   placeholder="_ _ _ _"
+                  onChange={(e) => handleCardNumber(e)}
                 />
                 <input
                   className="w-10 focus:outline-none mr-2"
                   type="text"
-                  name="year"
-                  // value="1234"
+                  name="partThree"
                   maxLength={4}
                   placeholder="_ _ _ _"
+                  onChange={(e) => handleCardNumber(e)}
                 />
                 <input
                   className="w-10 focus:outline-none "
                   type="text"
-                  name="year"
-                  // value="1234"
+                  name="partFour"
                   maxLength={4}
                   placeholder="_ _ _ _"
+                  onChange={(e) => handleCardNumber(e)}
                 />
               </div>
             </div>
@@ -134,21 +271,24 @@ export default function Payments() {
                     className="text-right w-20 focus:outline-none mr-2"
                     type="text"
                     name="month"
-                    // value="12"
                     maxLength={2}
                     placeholder="MM"
+                    onChange={(e) => handleExpireDate(e)}
                   />
-                  {"//"}
+                  <span>
+                      {"//"}
+                  </span>
                   <input
                     className="w-20 focus:outline-none ml-2"
                     type="text"
                     name="year"
-                    // value="27"
                     maxLength={2}
                     placeholder="YY"
+                    onChange={(e) => handleExpireDate(e)}
                   />
                 </div>
               </div>
+              {/* CVC */}
               <div className="flex-1">
                 <label className="text-lg font-istok_web" htmlFor="">
                   CVC
@@ -156,11 +296,17 @@ export default function Payments() {
                 <input
                   className="border-[1px] border-blue-300  rounded-lg bg-white w-full h-[40px] px-3 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-700"
                   type="text"
+                  placeholder="789"
+                  name='cvc'
                   maxLength={3}
+                  onChange={e => handlePaymentInfo(e)}
                 />
               </div>
             </div>
-            <div className="text-xl border-t-[1px] pt-4">
+            <div 
+              onClick={() => handlePayment()}
+              className="text-xl border-t-[1px] pt-4"
+            >
               <Button value={"Payment"} />
             </div>
           </form>

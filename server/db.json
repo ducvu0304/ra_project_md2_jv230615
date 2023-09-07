@@ -7,7 +7,9 @@
       "email": "ducvu@gmail.com",
       "password": "123456",
       "role": "user",
-      "avatar": ""
+      "avatar": "",
+      "phone": "",
+      "address": ""
     },
     {
       "id": 96883142,
@@ -16,7 +18,9 @@
       "email": "nguyenvana@gmail.com",
       "password": "U2FsdGVkX19EMUJMUcfrvYdksXxLo7Oud1KshIXJFCc=",
       "role": "user",
-      "avatar": ""
+      "avatar": "",
+      "phone": "",
+      "address": ""
     },
     {
       "id": 442036987,
@@ -25,7 +29,9 @@
       "email": "nguyenb@gmail.com",
       "password": "U2FsdGVkX18BGpRAiEmeuGtbeGxeQgdnSPSRME95VC0=",
       "role": "user",
-      "avatar": ""
+      "avatar": "",
+      "phone": "",
+      "address": ""
     },
     {
       "id": 736876324,
@@ -34,7 +40,9 @@
       "email": "ducvu01@gmail.com",
       "password": "U2FsdGVkX19j1qUTTdnWkv2Ytm2r9dh3wkIuh4+DP+w=",
       "role": "user",
-      "avatar": ""
+      "avatar": "",
+      "phone": "",
+      "address": ""
     },
     {
       "id": 568883818,
@@ -43,7 +51,9 @@
       "email": "nguyenvanb@gmail.com",
       "password": "U2FsdGVkX195V5g/DxoClvCP/VWKFobHk4vTVl2fV9s=",
       "role": "user",
-      "avatar": ""
+      "avatar": "",
+      "phone": "",
+      "address": ""  
     },
     {
       "id": 513066018,
@@ -52,7 +62,9 @@
       "email": "hungnguyenphi@gmail.com",
       "password": "U2FsdGVkX1/GFGD+HuH1tNKNcRvv0omB7STS2DY9eeE=",
       "role": "user",
-      "avatar": ""
+      "avatar": "",
+      "phone": "",
+      "address": ""
     }
   ],
   "products": [
